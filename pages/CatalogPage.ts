@@ -39,7 +39,10 @@ export class CatalogPage {
     await this.page
       .locator('.page-link', { hasText: new RegExp(`^${pageNumber}$`) })
       .click();
-}
+  }
+  async openProduct(index: number) {
+    await this.productCards.nth(index).click();
+  }
 
   async getProductNames(): Promise<string[]> {
     return (await this.productNames.allInnerTexts()).map((n) => n.trim());
